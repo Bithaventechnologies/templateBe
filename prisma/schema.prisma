@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum EmailStatus {
+  SENT
+  FAILED
+}
+
+/// Template info shown in the dashboard sidebar and form.
+/// The slug matches the template id used by the frontend layout.
+model Template {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String?
+  icon        String   @default("✉️")
+  category    String
+  /// Extra inputs the template needs: "code", "detail", "btn"
+  fields      String[]
+  /// Pre-filled subject, headline, message, etc.
+  defaults    Json
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  emails      Email[]
+
+  @@index([category])
+}
+
+/// History of every email the owner has sent
+model Email {
+  id         String      @id @default(cuid())
+  to         String
+  subject    String
+  html       String
+  status     EmailStatus
+  error      String?
+  messageId  String?
+  templateId String?
+  template   Template?   @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  createdAt  DateTime    @default(now())
+
+  @@index([createdAt])
+  @@index([status])
+}
+
+/// Single row (id = 1): the owner's business details
+model Settings {
+  id           Int      @id @default(1)
+  businessName String   @default("")
+  senderName   String   @default("")
+  replyTo      String?
+  updatedAt    DateTime @updatedAt
+}
