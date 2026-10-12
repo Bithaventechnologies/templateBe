@@ -3,6 +3,9 @@ const COMPANY_NAME = "Pantera Capital";
 
 const sharedFields = ["name", "companyName", "message"];
 
+const COMPANY_LOGO_URL =
+  "https://res.cloudinary.com/brkfv9ks/image/upload/f_auto,q_auto/pantera";
+
 
 
 const templates = [
@@ -141,12 +144,19 @@ export function renderEmailTemplate(id, subject, values = {}) {
               >
                 <tr>
                   <td align="center" style="padding:24px;background:#fff">
-                    <img
-                      src="../assets/pantera.jpg"
-                      alt="Pantera Capital"
-                      width="220"
-                      style="display:block;width:220px;max-width:100%;height:auto;border:0"
-                    >
+                   <img
+  src="${COMPANY_LOGO_URL}"
+  alt="Pantera Capital"
+  width="220"
+  style="
+    display:block;
+    width:220px;
+    max-width:100%;
+    height:auto;
+    margin:0 auto;
+    border:0;
+  "
+/>
                   </td>
                 </tr>
                 <tr>
