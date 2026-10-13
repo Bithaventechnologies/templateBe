@@ -19,7 +19,7 @@ if (missing.length) {
 export const env = {
   port: Number(process.env.PORT) || 5000,
   nodeEnv: process.env.NODE_ENV || "development",
-  clientUrls: (process.env.CLIENT_URL || "http://localhost:5173")
+  clientUrls: (process.env.CLIENT_URL || "http://localhost:5173", "https://template-fe-nine.vercel.app/")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean),
