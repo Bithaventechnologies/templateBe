@@ -8,6 +8,7 @@ const LOGO_URL =  "https://res.cloudinary.com/brkfv9ks/image/upload/f_auto,q_aut
 
 const sharedFields = ["name", "companyName", "message"];
 
+
 const templates = [
   {
     id: "welcome",
@@ -21,6 +22,7 @@ const templates = [
       primary: "#176B52",
       accent: "#D9F3E8",
       background: "#F1F8F5",
+      font: "Trebuchet MS, Arial, sans-serif",
     },
   },
   {
@@ -35,6 +37,7 @@ const templates = [
       primary: "#233876",
       accent: "#E8EDFA",
       background: "#F3F5FA",
+      font: "Georgia, Times New Roman, serif",
     },
   },
   {
@@ -49,6 +52,7 @@ const templates = [
       primary: "#986414",
       accent: "#FFF0C7",
       background: "#FFFAEF",
+      font: "Palatino Linotype, Book Antiqua, Georgia, serif",
     },
   },
   {
@@ -63,6 +67,7 @@ const templates = [
       primary: "#9D315D",
       accent: "#FCE5EF",
       background: "#FFF5F8",
+      font: "Verdana, Geneva, sans-serif",
     },
   },
   {
@@ -77,6 +82,7 @@ const templates = [
       primary: "#175D91",
       accent: "#DDF1FF",
       background: "#F1F8FD",
+      font: "Arial, Helvetica, sans-serif",
     },
   },
   {
@@ -91,9 +97,11 @@ const templates = [
       primary: "#55418C",
       accent: "#EAE3FA",
       background: "#F7F4FC",
+      font: "Tahoma, Geneva, sans-serif",
     },
   },
 ];
+
 
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, (char) => ({
