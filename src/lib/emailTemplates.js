@@ -337,11 +337,10 @@ function validateTemplateValues(id, values = {}) {
   return null;
 }
 
-module.exports = {
+export {
   listEmailTemplates,
   renderEmailTemplate,
   validateTemplateValues,
 };
-
 
 
